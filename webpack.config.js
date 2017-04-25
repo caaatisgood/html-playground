@@ -2,17 +2,17 @@
 
 var path = require('path')
 var webpack = require('webpack')
-var dir_js = path.resolve(__dirname, 'src')
-var dir_build = path.resolve(__dirname, 'build')
+var DIR_JS = path.resolve(__dirname, 'src')
+var DIR_STATIC = path.resolve(__dirname, 'static')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
-    js: path.resolve(dir_js, 'index.js')
+    js: path.resolve(DIR_JS, 'index.js')
   },
   output: {
-    path: dir_build,
+    path: DIR_STATIC,
     filename: 'bundle.js'
   },
   module: {
@@ -47,13 +47,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
   stats: {
     colors: true
   },
   devServer: {
-    contentBase: dir_build,
+    contentBase: DIR_STATIC,
     hot: true
   }
 }
