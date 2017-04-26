@@ -1,10 +1,51 @@
-/* global __dirname */
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const DIR_JS = path.resolve(__dirname, 'src')
+const DIR_STATIC = path.resolve(__dirname, 'static')
 
-var path = require('path')
-var webpack = require('webpack')
-var DIR_JS = path.resolve(__dirname, 'src')
-var DIR_STATIC = path.resolve(__dirname, 'static')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+let cssLoaderConfig
+if (process.env.NODE_ENV === 'dev') {
+  cssLoaderConfig = [
+    'style-loader',
+    'css-loader',
+    {
+      loader: 'postcss-loader',
+      options: {
+        plugins: function () {
+          return [
+            require('precss'),
+            require('autoprefixer')
+          ]
+        }
+      }
+    }
+  ]
+} else {
+  cssLoaderConfig = ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    use: [
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders: 1
+        }
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: function () {
+            return [
+              require('precss'),
+              require('autoprefixer')
+            ]
+          }
+        }
+      }
+    ]
+  })
+}
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -27,14 +68,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          }
-        ]
+        use: cssLoaderConfig
       },
       {
         test: /\.html$/,
@@ -47,6 +81,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
+    new ExtractTextPlugin('styles.css'),
     new webpack.NoEmitOnErrorsPlugin()
   ],
   stats: {
