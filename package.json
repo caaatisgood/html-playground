@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=prod webpack --optimize-minimize --progress --colors",
+    "dev:hbs": "cross-env webpack-dev-server -d --config webpack.config.hbs.js --history-api-fallback --inline --progress --colors --port 8700",
     "dev": "cross-env NODE_ENV=dev webpack-dev-server -d --history-api-fallback --inline --progress --colors --port 8700"
   },
   "author": "Robin",
