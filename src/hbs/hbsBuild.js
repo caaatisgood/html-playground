@@ -15,9 +15,11 @@ const rawHtml = fs.readFileSync(srcFilePath, 'utf8')
 
 const { document } = (new JSDOM(rawHtml)).window
 
-let rawTemplate = document.querySelector('#hbsTemplate').innerHTML
+const templateDOM = document.querySelector('#hbsTemplate')
 
-if (!rawTemplate) throw new Error('hbs template not found. You should add an id "hbsTemplate" to the hbs script tag')
+if (!templateDOM) throw new Error('hbs template not found. You should add an id "hbsTemplate" to the hbs script tag')
+
+const rawTemplate = templateDOM.innerHTML
 
 try {
 
