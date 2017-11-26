@@ -32,8 +32,8 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'hbs-index.html',
-      template: path.join(DIR_JS, 'hbs-index.html')
+      filename: 'index.html',
+      template: path.join(DIR_JS, 'index.html')
     }),
     new webpack.NoEmitOnErrorsPlugin()
   ],

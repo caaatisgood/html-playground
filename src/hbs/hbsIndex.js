@@ -1,1 +1,1 @@
-import './hbs-index.html'
+import './index.html'

@@ -2,9 +2,9 @@ import { JSDOM } from 'jsdom'
 const fs = require('fs')
 const path = require('path')
 
-const srcFileName = 'hbs-index.html'
+const srcFileName = 'index.html'
 const srcFilePath = path.join(__dirname, srcFileName)
-const buildFileName = 'hbs-index.html'
+const buildFileName = 'index.html'
 const buildDir = path.join(__dirname, 'build')
 const buildFilePath = path.join(buildDir, buildFileName)
 
