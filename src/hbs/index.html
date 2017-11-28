@@ -1,17 +1,19 @@
 <html>
 <head>
   <title>HBS Template</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
+  <script id="hbsLib" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
 </head>
 <body>
 
-<script id="hbsTemplate" type="text/x-handlebars-template">
-  <div style="height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; font-family: ">
-    {{fella}} likes to {{talent}}.
-  </div>
-</script>
+<div>
+  <script id="hbsTemplate" type="text/x-handlebars-template">
+    <div style="height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center;">
+      {{fella}} likes to {{talent}}.
+    </div>
+  </script>
+</div>
 
-<script>
+<script id="hbsScript">
   var rawTemplate = document.querySelector('#hbsTemplate').innerHTML
   var context = {
     fella: 'Ben',
