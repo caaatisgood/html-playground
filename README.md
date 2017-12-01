@@ -12,6 +12,7 @@
 Dev for normal template
 
 `yarn run dev` - dev, go [localhost:8700](http://localhost:8700)
+
 `yarn run build` - build
 
 Dev for handlebars template
