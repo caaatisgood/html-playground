@@ -1,3 +1,3 @@
 import './index.html'
 import './style.css'
-console.log('hi, shit!')
+console.log('HTML playground')
