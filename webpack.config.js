@@ -89,6 +89,8 @@ module.exports = {
   },
   devServer: {
     contentBase: DIR_STATIC,
-    hot: true
+    hot: true,
+    historyApiFallback: true,
+    inline: true,
   }
 }

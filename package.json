@@ -1,14 +1,13 @@
 {
   "name": "html-playground",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "html-playground",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server -d --progress --colors --port 8700",
+    "dev:hbs": "cross-env webpack-dev-server -d --config webpack.config.hbs.js --progress --colors --port 8700",
     "build": "cross-env NODE_ENV=prod webpack --optimize-minimize --progress --colors",
-    "dev:hbs": "cross-env webpack-dev-server -d --config webpack.config.hbs.js --history-api-fallback --inline --progress --colors --port 8700",
-    "build:hbsRawTemplate": "node ./src/hbs/index.js",
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server -d --history-api-fallback --inline --progress --colors --port 8700"
+    "build:hbs": "node ./src/hbs/index.js"
   },
   "author": "Robin",
   "license": "MIT",
